@@ -4,21 +4,50 @@
   box-sizing: border-box;
 }
 
+.container {
+
+}
+
 .searchbar {
-  border: 1px solid black;
+  background-color: rgb(20, 20, 20);
+  padding: 0 5%;
 }
 
 .searchbar .content-searchbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;;
+  padding: 15px 15px;;
 }
 
 .searchbar .content-searchbar .left-searchbar img {
-  height: 35px;
+  height: 30px;
 }
 
 .searchbar .content-searchbar .left-searchbar img:hover {
   cursor: pointer;
+}
+
+.searchbar .content-searchbar .right-searchbar {
+  display: flex;
+  align-items: center;
+}
+
+.searchbar .content-searchbar .right-searchbar input {
+  background-color: rgb(20, 20, 20);
+  border: 1px solid #fff;
+  padding: 5px;
+  color: #fff;
+  margin: 0 5px;
+}
+
+.searchbar .content-searchbar .right-searchbar input::placeholder {
+  color: #fff;
+}
+
+.searchbar .content-searchbar .right-searchbar i {
+  padding: 5px;
+  color: #fff;
+  margin: 0 5px;
+  font-size: 20px;
 }

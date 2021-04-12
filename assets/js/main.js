@@ -5,8 +5,7 @@ var app = new Vue ({
   el: '#root',
   data: {
     inputUtente:'',
-    filmRicerca:'',
-    nationFlag:'',
+    videoRicerca:'',
   }, //Chiusura Data
 
   mounted () {
@@ -17,21 +16,15 @@ var app = new Vue ({
 
     searchUtente: function () {
       if (this.inputUtente != '') {
-        //Chiamata film
+        //Chiamata film e serie tv
         axios.get(`https://api.themoviedb.org/3/search/multi/?api_key=ad28c8704dd19a7fa43c2efc35202dc8&query=${this.inputUtente}`)
         .then((response) => {
-          this.filmRicerca = (response.data.results);
-          console.log(this.filmRicerca);
+          this.videoRicerca = (response.data.results);
+          console.log(this.videoRicerca);
         });
       } else {
       }
     }, //Chiusura searcUtente
 
-    provanation: function () {
-      for (var i = 0; i < this.filmRicerca.length; i++) {
-        console.log(this.filmRicerca[i].original_language);
-      }
-
-    }
   } //Chiusura Methods
 }); //Chiusura Vue
