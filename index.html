@@ -14,7 +14,7 @@
       <div class="searchbar">
         <div class="content-searchbar">
           <div class="left-searchbar">
-            <img src="assets/img/logo-boolflix.png" alt="Logo Boolflix">
+            <a href=""><img src="assets/img/logo-boolflix.png" alt="Logo Boolflix"></a>
           </div>
           <div class="right-searchbar">
             <input type="text" v-model="inputUtente" v-on:keyup.enter="searchUtente" placeholder="Cerca un titolo">
@@ -24,9 +24,18 @@
       </div>
     </div>
     <div class="container">
-      <ul>
-        <li v-for="video in videoRicerca">Titolo: {{ video.title }} Titolo Originale: {{ video.original_title }} <br> Lingua: {{ video.original_language }} Voto: {{ video.vote_average }} Tipo: {{ video.media_type }}</li>
-      </ul>
+      <div class="main">
+        <ul>
+          <li v-for="video in videoRicerca">Titolo: {{ video.title }} Titolo Originale: {{ video.original_title }} <br> Voto: {{ video.vote_average }} Tipo: {{ video.media_type }}
+            Lingua:
+            <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
+            <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
+            <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
+            <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
+            <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`>
+          </li>
+        </ul>
+      </div>
     </div>
 
   </div>
