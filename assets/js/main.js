@@ -6,11 +6,10 @@ var app = new Vue ({
   data: {
     inputUtente:'',
     videoRicerca:'',
-    nationFlag:'',
   }, //Chiusura Data
 
   mounted () {
-
+    
   },
 
   methods: {
