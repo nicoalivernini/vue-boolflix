@@ -16,15 +16,20 @@
             <img src="assets/img/logo-boolflix.png" alt="Logo Boolflix">
           </div>
           <div class="right-searchbar">
-            <input type="text" name="" value="">
-            <button type="button" name="button">Bottone</button>
+            <input type="text" v-model="inputUtente" v-on:keyup.enter="searchUtente">
+            <button type="button" name="button" @click="searchUtente">Invio</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <ul>
+        <li></li>
+      </ul>
+    </div>
 
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="./assets/js/main.js" charset="utf-8"></script>
 </body>
