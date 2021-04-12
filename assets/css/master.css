@@ -3,3 +3,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.searchbar {
+  border: 1px solid black;
+}
+
+.searchbar .content-searchbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;;
+}
+
+.searchbar .content-searchbar .left-searchbar img {
+  height: 35px;
+}
+
+.searchbar .content-searchbar .left-searchbar img:hover {
+  cursor: pointer;
+}
