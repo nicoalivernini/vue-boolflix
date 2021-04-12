@@ -24,7 +24,7 @@
     </div>
     <div class="container">
       <ul>
-        <li></li>
+        <li v-for="film in filmRicerca">Titolo: {{ film.title }} Titolo Originale: {{ film.original_title }} <br> Lingua: {{ film.original_language }} Voto: {{ film.vote_average }}</li>
       </ul>
     </div>
 

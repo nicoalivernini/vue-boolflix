@@ -5,6 +5,7 @@ var app = new Vue ({
   el: '#root',
   data: {
     inputUtente:'',
+    filmRicerca:'',
   }, //Chiusura Data
 
   mounted () {
@@ -16,13 +17,11 @@ var app = new Vue ({
     searchUtente: function () {
       if (this.inputUtente != '') {
         //Chiamata film
-        axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=ad28c8704dd19a7fa43c2efc35202dc8&query=${this.inputUtente}&language=it-IT`)
+        axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=ad28c8704dd19a7fa43c2efc35202dc8&query=${this.inputUtente}`)
         .then((response) => {
-          let filmChiamata = response.data.results;
-          console.log(filmChiamata);
+          this.filmRicerca = (response.data.results);
         });
       } else {
-        console.log('stringa vuota');
       }
 
     }
