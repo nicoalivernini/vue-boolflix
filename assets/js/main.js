@@ -9,7 +9,7 @@ var app = new Vue ({
   }, //Chiusura Data
 
   mounted () {
-    
+
   },
 
   methods: {
@@ -24,7 +24,7 @@ var app = new Vue ({
         });
       } else {
       }
-    }, //Chiusura searcUtente
+    }, //Chiusura searchUtente
 
   } //Chiusura Methods
 }); //Chiusura Vue

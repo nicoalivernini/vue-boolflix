@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolflix</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/master.css">
 </head>
@@ -25,16 +27,26 @@
     </div>
     <div class="container">
       <div class="main">
-        <ul>
-          <li v-for="video in videoRicerca">Titolo: {{ video.title }} Titolo Originale: {{ video.original_title }} <br> Voto: {{ video.vote_average }} Tipo: {{ video.media_type }}
-            Lingua:
-            <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
-            <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
-            <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
-            <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
-            <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`>
-          </li>
-        </ul>
+        <div class="card" v-for="video in videoRicerca">
+          <div class="content-card">
+            <div class="image-card">
+              <img :src=`https://image.tmdb.org/t/p/w200/${video.poster_path}`>
+              <div class="text-card">
+                <p class="title">{{ video.title }}</p>
+                <p>Titolo Originale: {{ video.original_title }}</p>
+                <span class="vote">Voto: {{ video.vote_average }}</span>
+                <p><i class="fas fa-star" v-for="stelle in 5"></i></p>
+                <p>Tipo: {{ video.media_type }}</p>
+                <span>
+                <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
+                <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
+                <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
+                <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
+                <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
