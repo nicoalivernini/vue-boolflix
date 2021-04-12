@@ -13,7 +13,7 @@
       <div class="searchbar">
         <div class="content-searchbar">
           <div class="left-searchbar">
-            <img src="assets/img/logo-boolflix.png" alt="Logo Boolflix">
+            <img src="assets/img/logo-boolflix.png" alt="Logo Boolflix" @click="provanation">
           </div>
           <div class="right-searchbar">
             <input type="text" v-model="inputUtente" v-on:keyup.enter="searchUtente">
@@ -24,7 +24,7 @@
     </div>
     <div class="container">
       <ul>
-        <li v-for="film in filmRicerca">Titolo: {{ film.title }} Titolo Originale: {{ film.original_title }} <br> Lingua: {{ film.original_language }} Voto: {{ film.vote_average }}</li>
+        <li v-for="film in filmRicerca":src="nationFlag">Titolo: {{ film.title }} Titolo Originale: {{ film.original_title }} <br> Lingua: {{ film.original_language }} Voto: {{ film.vote_average }}</li>
       </ul>
     </div>
 
