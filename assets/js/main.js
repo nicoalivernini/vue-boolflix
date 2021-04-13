@@ -6,7 +6,9 @@ var app = new Vue ({
   data: {
     inputUtente:'',
     videoRicerca:'',
-    stelle:'',
+    lingua:'',
+    apiKey:'ad28c8704dd19a7fa43c2efc35202dc8',
+    uri:'https://api.themoviedb.org/3',
   }, //Chiusura Data
 
   created () {
@@ -22,7 +24,7 @@ var app = new Vue ({
     searchUtente: function () {
       if (this.inputUtente != '') {
         //Chiamata film e serie tv
-        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=ad28c8704dd19a7fa43c2efc35202dc8&query=${this.inputUtente}`)
+        axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
           // console.log(this.videoRicerca);
@@ -48,6 +50,13 @@ var app = new Vue ({
       return stelleBianche;
     },//Chiusura starsWhite
 
-  
+    flagItaly: function () {
+      this.lingua = 'it-IT'
+    },//Chiusura flagItaly
+
+    flagUk: function () {
+      this.lingua = 'en-EN'
+    }
+
   } //Chiusura Methods
 }); //Chiusura Vue

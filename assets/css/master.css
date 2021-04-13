@@ -19,12 +19,33 @@
   padding: 15px 15px;;
 }
 
+.searchbar .content-searchbar .left-searchbar {
+  display: flex;
+  justify-content: center;
+}
+
 .searchbar .content-searchbar .left-searchbar img {
   height: 30px;
 }
 
 .searchbar .content-searchbar .left-searchbar img:hover {
   cursor: pointer;
+}
+
+.searchbar .content-searchbar .left-searchbar a {
+  text-decoration: none;
+  vertical-align: middle;
+  margin-right: 25px;
+}
+
+.searchbar .content-searchbar .left-searchbar a span {
+  color: white;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.searchbar .content-searchbar .left-searchbar a:hover span {
+  font-weight: 600;
 }
 
 .searchbar .content-searchbar .right-searchbar {
@@ -51,13 +72,17 @@
   font-size: 20px;
 }
 
+.flag {
+  width: 20px;
+  margin: 0 5px;
+}
+
 .main {
   background-color: rgb(17, 17, 17);
-  padding: 15px 5%;
+  padding: 0 5%;
   color: #fff;
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
 }
 
 .main .card {

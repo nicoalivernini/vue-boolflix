@@ -18,10 +18,14 @@
         <div class="content-searchbar">
           <div class="left-searchbar">
             <a href=""><img src="assets/img/logo-boolflix.png" alt="Logo Boolflix"></a>
+            <a href="#"><span>Film</span></a>
+            <a href="#"><span>Serie tv</span></a>
           </div>
           <div class="right-searchbar">
             <input type="text" v-model="inputUtente" v-on:keyup.enter="searchUtente" placeholder="Cerca un titolo">
             <i class="fas fa-search" @click="searchUtente"></i>
+            <img src="assets/img/flag-italy.png" alt="" class="flag" @click="flagItaly">
+            <img src="assets/img/flag-united-kingdom.png" alt="" class="flag" @click="flagUk">
           </div>
         </div>
       </div>
