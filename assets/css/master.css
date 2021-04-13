@@ -53,15 +53,18 @@
 
 .main {
   background-color: rgb(17, 17, 17);
-  padding: 0 5%;
+  padding: 15px 5%;
   color: #fff;
   display: flex;
   flex-wrap: wrap;
+  height: 100vh;
 }
 
 .main .card {
   width: 200px;
+  height: 300px;
   margin: 10px;
+  overflow: hidden;
 }
 
 .card .content-card .image-card {
