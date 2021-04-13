@@ -6,7 +6,7 @@ var app = new Vue ({
   data: {
     inputUtente:'',
     videoRicerca:'',
-    vote:'',
+    stelle:'',
   }, //Chiusura Data
 
   created () {
@@ -31,12 +31,22 @@ var app = new Vue ({
       }
     }, //Chiusura searchUtente
 
-    getStars: function (vote) {
+    starsYellow: function (vote){
+      if (vote == undefined) {
+        return 0;
+      }
+      return Math.ceil(vote/2);
+    }, //Chiusura starsYellow
+
+    starsWhite: function (vote) {
+      if (vote == undefined) {
+        return 0;
+      }
       let votoArrotondato = Math.ceil(vote/2);
+      let stelleBianche = 5 - votoArrotondato;
 
-      return votoArrotondato
-    }, //Chiusura getStars
-
+      return stelleBianche;
+    },//Chiusura starsWhite
 
 
   } //Chiusura Methods
