@@ -34,7 +34,7 @@
               <img v-else :src=`https://image.tmdb.org/t/p/w200/${video.poster_path}`>
               <div class="text-card">
                 <p class="title">{{ video.title ? video.title : video.name }}</p>
-                <p>Titolo Originale: {{ video.original_title ? video.original_title : video.original_name }}</p>
+                <p v-if="video.title != video.original_title || video.name != video.original_name">Titolo Originale: {{ video.original_title ? video.original_title : video.original_name }}</p>
                 <span class="vote">Voto: {{ video.vote_average }}</span>
                 <p><i class="fas fa-star" v-for="stelle in 5"></i></p>
                 <p>Tipo: {{ video.media_type }}</p>
