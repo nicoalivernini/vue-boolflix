@@ -28,6 +28,8 @@ var app = new Vue ({
         .then((response) => {
           this.videoRicerca = (response.data.results);
           // console.log(this.videoRicerca);
+
+        this.inputUtente='';
         });
       } else {
       }

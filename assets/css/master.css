@@ -72,17 +72,29 @@
   font-size: 20px;
 }
 
+.searchbar .content-searchbar .right-searchbar i:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .flag {
   width: 20px;
   margin: 0 5px;
 }
 
+.flag:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .main {
   background-color: rgb(17, 17, 17);
-  padding: 0 5%;
+  padding: 15px 5%;
   color: #fff;
   display: flex;
   flex-wrap: wrap;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .main .card {
@@ -148,4 +160,33 @@
 .overview {
   font-size: 13px;
   margin-bottom: 15px;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: rgb(20, 20, 20);
+  padding: 0 5%;
+}
+
+.footer .content-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;;
+}
+
+.footer .content-footer img {
+  height: 30px;
+}
+
+.footer .content-footer img:hover {
+  cursor: pointer;
+}
+
+.copyright {
+  color: rgb(211, 211, 211);
+  font-size: 13px;
+  margin: 5px;
 }
