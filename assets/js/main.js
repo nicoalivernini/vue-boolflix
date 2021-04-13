@@ -48,6 +48,6 @@ var app = new Vue ({
       return stelleBianche;
     },//Chiusura starsWhite
 
-
+  
   } //Chiusura Methods
 }); //Chiusura Vue

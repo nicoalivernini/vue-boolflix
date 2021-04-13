@@ -35,18 +35,22 @@
               <img v-else :src=`https://image.tmdb.org/t/p/w200/${video.poster_path}`>
               <div class="text-card">
                 <p class="title">{{ video.title ? video.title : video.name }}</p>
-                <p v-if="video.title != video.original_title || video.name != video.original_name">Titolo Originale: {{ video.original_title ? video.original_title : video.original_name }}</p>
+                <p v-if="video.title != video.original_title || video.name != video.original_name">"{{ video.original_title ? video.original_title : video.original_name }}"</p>
                 <div class="stars">
                   <i class="fas fa-star yellow" v-for="stella in starsYellow(video.vote_average)"></i>
                   <i class="fas fa-star" v-for="stella in starsWhite(video.vote_average)"></i>
                 </div>
                 <p>Tipo: {{ video.media_type }}</p>
                 <span>
-                <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
-                <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
-                <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
-                <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
-                <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`></span>
+                  <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
+                  <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
+                  <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
+                  <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
+                  <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`>
+                </span>
+                <div class="overview-content">
+                  <p class="overview">{{ video.overview }}</p>
+                </div>
               </div>
             </div>
           </div>
