@@ -36,8 +36,9 @@
               <div class="text-card">
                 <p class="title">{{ video.title ? video.title : video.name }}</p>
                 <p v-if="video.title != video.original_title || video.name != video.original_name">Titolo Originale: {{ video.original_title ? video.original_title : video.original_name }}</p>
-                <span class="vote">Voto: {{ video.vote_average }}</span>
-                <p><i class="fas fa-star" v-for="stelle in 5"></i></p>
+                <!-- <span class="vote">Voto: {{ video.vote_average / 2 }}</span> -->
+                <!-- <p><i class="fas fa-star yellow" v-for="stelle in 5"></i></p> -->
+                <p v-html="getStars(video.vote_average)"></p>
                 <p>Tipo: {{ video.media_type }}</p>
                 <span>
                 <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
