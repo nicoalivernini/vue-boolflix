@@ -30,10 +30,11 @@
         <div class="card" v-for="video in videoRicerca">
           <div class="content-card">
             <div class="image-card">
-              <img :src=`https://image.tmdb.org/t/p/w200/${video.poster_path}`>
+              <img v-if="video.poster_path == null || video.poster_path == undefined" src="assets/img/copertina-vuota.png" alt="">
+              <img v-else :src=`https://image.tmdb.org/t/p/w200/${video.poster_path}`>
               <div class="text-card">
-                <p class="title">{{ video.title }}</p>
-                <p>Titolo Originale: {{ video.original_title }}</p>
+                <p class="title">{{ video.title ? video.title : video.name }}</p>
+                <p>Titolo Originale: {{ video.original_title ? video.original_title : video.original_name }}</p>
                 <span class="vote">Voto: {{ video.vote_average }}</span>
                 <p><i class="fas fa-star" v-for="stelle in 5"></i></p>
                 <p>Tipo: {{ video.media_type }}</p>
