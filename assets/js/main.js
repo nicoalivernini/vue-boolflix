@@ -18,7 +18,7 @@ var app = new Vue ({
   },
 
   mounted () {
-    //Chiamata iniziale ai più votati
+    //Chiamata iniziale alle prossime uscite
     axios.get(`${this.uri}/movie/upcoming?api_key=${this.apiKey}&language=it`)
     .then((response) => {
       this.videoRicerca = (response.data.results);
@@ -69,13 +69,13 @@ var app = new Vue ({
           this.titleH1 = "Film popolari:";
         });
       } else {
-      axios.get(`${this.uri}/search/movie?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
-      .then((response) => {
-        this.videoRicerca = (response.data.results);
-        this.type = 'movie';
-        this.titleH1 = `I film della ricerca: ${this.inputUtente}`;
-      });
-      }
+        axios.get(`${this.uri}/search/movie?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+          this.type = 'movie';
+          this.titleH1 = `I film della ricerca: ${this.inputUtente}`;
+        });
+        }
     },//Chiusura selectionFilm
 
     selectionSeries: function () {
@@ -88,13 +88,13 @@ var app = new Vue ({
           this.titleH1 = "Serie tv popolari:";
         });
       } else {
-      axios.get(`${this.uri}/search/tv?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
-      .then((response) => {
-        this.videoRicerca = (response.data.results);
-        this.type = 'tv';
-        this.titleH1 = `Serie tv della ricerca: ${this.inputUtente}`;
-      });
-      }
+        axios.get(`${this.uri}/search/tv?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+          this.type = 'tv';
+          this.titleH1 = `Serie tv della ricerca: ${this.inputUtente}`;
+        });
+        }
     }, //Chiusura selectionSeries
 
     flag: function (nazione) {
@@ -108,7 +108,7 @@ var app = new Vue ({
         .then((response) => {
           this.videoRicerca = (response.data.results);
         });
-      }
+        }
     },//Chiusura flag
 
   } //Chiusura Methods

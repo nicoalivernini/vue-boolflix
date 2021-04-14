@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .container {
   font-family: 'Titillium Web', sans-serif;
 }
@@ -166,7 +167,6 @@
 .overview-content {
   height: 100%;
   overflow-y: auto;
-
 }
 
 .overview {

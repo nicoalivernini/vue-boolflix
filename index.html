@@ -48,7 +48,7 @@
                     <i class="fas fa-star yellow" v-for="stella in starsYellow(video.vote_average)"></i>
                     <i class="fas fa-star" v-for="stella in starsWhite(video.vote_average)"></i>
                   </div>
-                  <p>Tipo: {{ video.media_type || type}}</p>
+                  <p>Tipo: {{ video.media_type || type }}</p>
                   <span>
                     <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
                     <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
