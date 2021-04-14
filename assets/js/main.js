@@ -10,6 +10,7 @@ var app = new Vue ({
     apiKey:'ad28c8704dd19a7fa43c2efc35202dc8',
     uri:'https://api.themoviedb.org/3',
     type:'',
+    titleH1:'',
   }, //Chiusura Data
 
   created () {
@@ -17,25 +18,25 @@ var app = new Vue ({
   },
 
   mounted () {
-    // //Chiamata iniziale film più popolari
-    // axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=${this.lingua}`)
-    // .then((response) => {
-    //   this.videoRicerca = (response.data.results);
-    //   // console.log(this.videoRicerca);
-    //
-    // this.inputUtente='';
-    // });
-  },//ChiusuraMounted
+    //Chiamata iniziale ai più votati
+    axios.get(`${this.uri}/movie/upcoming?api_key=${this.apiKey}&language=it`)
+    .then((response) => {
+      this.videoRicerca = (response.data.results);
+      this.type = 'movie';
+      this.titleH1 = "Prossime uscite:";
+    });
+  },
 
   methods: {
 
     searchUtente: function () {
       if (this.inputUtente != '') {
         //Chiamata film e serie tv
-        axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
+        axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
           this.type = '';
+          this.titleH1 = `La tua ricerca: ${this.inputUtente}`
         });
       } else {
       }
@@ -61,16 +62,18 @@ var app = new Vue ({
     selectionFilm: function () {
       //Chiamata film
       if (this.inputUtente == '') {
-        axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=${this.lingua}`)
+        axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=it`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
           this.type = 'movie';
+          this.titleH1 = "Film popolari:";
         });
       } else {
-      axios.get(`${this.uri}/search/movie?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
+      axios.get(`${this.uri}/search/movie?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
       .then((response) => {
         this.videoRicerca = (response.data.results);
         this.type = 'movie';
+        this.titleH1 = `I film della ricerca: ${this.inputUtente}`;
       });
       }
     },//Chiusura selectionFilm
@@ -78,16 +81,18 @@ var app = new Vue ({
     selectionSeries: function () {
       //Chiamata serie
       if (this.inputUtente == '') {
-        axios.get(`${this.uri}/tv/popular?api_key=${this.apiKey}&language=${this.lingua}`)
+        axios.get(`${this.uri}/tv/popular?api_key=${this.apiKey}&language=it`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
           this.type = 'tv';
+          this.titleH1 = "Serie tv popolari:";
         });
       } else {
-      axios.get(`${this.uri}/search/tv?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
+      axios.get(`${this.uri}/search/tv?api_key=${this.apiKey}&query=${this.inputUtente}&language=it`)
       .then((response) => {
         this.videoRicerca = (response.data.results);
         this.type = 'tv';
+        this.titleH1 = `Serie tv della ricerca: ${this.inputUtente}`;
       });
       }
     }, //Chiusura selectionSeries
