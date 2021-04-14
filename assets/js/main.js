@@ -9,6 +9,7 @@ var app = new Vue ({
     lingua:'',
     apiKey:'ad28c8704dd19a7fa43c2efc35202dc8',
     uri:'https://api.themoviedb.org/3',
+    type:'',
   }, //Chiusura Data
 
   created () {
@@ -16,8 +17,15 @@ var app = new Vue ({
   },
 
   mounted () {
-
-  },
+    // //Chiamata iniziale film più popolari
+    // axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=${this.lingua}`)
+    // .then((response) => {
+    //   this.videoRicerca = (response.data.results);
+    //   // console.log(this.videoRicerca);
+    //
+    // this.inputUtente='';
+    // });
+  },//ChiusuraMounted
 
   methods: {
 
@@ -27,9 +35,7 @@ var app = new Vue ({
         axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
-          // console.log(this.videoRicerca);
-
-        this.inputUtente='';
+          this.type = '';
         });
       } else {
       }
@@ -52,13 +58,53 @@ var app = new Vue ({
       return stelleBianche;
     },//Chiusura starsWhite
 
-    flagItaly: function () {
-      this.lingua = 'it-IT'
-    },//Chiusura flagItaly
+    selectionFilm: function () {
+      //Chiamata film
+      if (this.inputUtente == '') {
+        axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=${this.lingua}`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+          this.type = 'movie';
+        });
+      } else {
+      axios.get(`${this.uri}/search/movie?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
+      .then((response) => {
+        this.videoRicerca = (response.data.results);
+        this.type = 'movie';
+      });
+      }
+    },//Chiusura selectionFilm
 
-    flagUk: function () {
-      this.lingua = 'en-EN'
-    }
+    selectionSeries: function () {
+      //Chiamata serie
+      if (this.inputUtente == '') {
+        axios.get(`${this.uri}/tv/popular?api_key=${this.apiKey}&language=${this.lingua}`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+          this.type = 'tv';
+        });
+      } else {
+      axios.get(`${this.uri}/search/tv?api_key=${this.apiKey}&query=${this.inputUtente}&language=${this.lingua}`)
+      .then((response) => {
+        this.videoRicerca = (response.data.results);
+        this.type = 'tv';
+      });
+      }
+    }, //Chiusura selectionSeries
+
+    flag: function (nazione) {
+      if (this.type != '') {
+        axios.get(`${this.uri}/search/${this.type}?api_key=${this.apiKey}&query=${this.inputUtente}&language=${nazione}`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+        });
+      } else {
+        axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=${nazione}`)
+        .then((response) => {
+          this.videoRicerca = (response.data.results);
+        });
+      }
+    },//Chiusura flag
 
   } //Chiusura Methods
 }); //Chiusura Vue

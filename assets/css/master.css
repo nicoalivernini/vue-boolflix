@@ -10,6 +10,7 @@
 .searchbar {
   background-color: rgb(20, 20, 20);
   padding: 0 5%;
+  min-width: 685px;
 }
 
 .searchbar .content-searchbar {
@@ -95,6 +96,7 @@
   flex-wrap: wrap;
   height: 100vh;
   overflow-y: auto;
+  min-width: 685px;
 }
 
 .main .card {
@@ -167,6 +169,7 @@
 .footer {
   background-color: rgb(20, 20, 20);
   padding: 0 5%;
+  min-width: 685px;
 }
 
 .footer .content-footer {

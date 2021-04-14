@@ -18,14 +18,14 @@
         <div class="content-searchbar">
           <div class="left-searchbar">
             <a href=""><img src="assets/img/logo-boolflix.png" alt="Logo Boolflix"></a>
-            <a href="#"><span>Film</span></a>
-            <a href="#"><span>Serie tv</span></a>
+            <a href="#"><span @click="selectionFilm">Film</span></a>
+            <a href="#"><span @click="selectionSeries">Serie tv</span></a>
           </div>
           <div class="right-searchbar">
             <input type="text" v-model="inputUtente" v-on:keyup.enter="searchUtente" placeholder="Cerca un titolo">
             <i class="fas fa-search" @click="searchUtente"></i>
-            <img src="assets/img/flag-italy.png" alt="" class="flag" @click="flagItaly">
-            <img src="assets/img/flag-united-kingdom.png" alt="" class="flag" @click="flagUk">
+            <img src="assets/img/flag-italy.png" alt="" class="flag" @click="flag('it')">
+            <img src="assets/img/flag-united-kingdom.png" alt="" class="flag" @click="flag('en')">
           </div>
         </div>
       </div>
@@ -44,16 +44,19 @@
                   <i class="fas fa-star yellow" v-for="stella in starsYellow(video.vote_average)"></i>
                   <i class="fas fa-star" v-for="stella in starsWhite(video.vote_average)"></i>
                 </div>
-                <p>Tipo: {{ video.media_type }}</p>
+                <p>Tipo: {{ video.media_type || type}}</p>
                 <span>
                   <img v-if="video.original_language == 'en'" src="https://countryflags.io/us/flat/16.png">
                   <img v-else-if="video.original_language == 'ja'" src="https://countryflags.io/jp/flat/16.png">
+                  <img v-else-if="video.original_language == 'ko'" src="https://countryflags.io/kr/flat/16.png">
+                  <img v-else-if="video.original_language == 'ur'" src="https://countryflags.io/pk/flat/16.png">
                   <img v-else-if="video.original_language == 'da'" src="https://countryflags.io/de/flat/16.png">
                   <img v-else-if="video.original_language == 'zh'" src="https://countryflags.io/cn/flat/16.png">
                   <img v-else :src=`https://www.countryflags.io/${video.original_language}/flat/16.png`>
                 </span>
                 <div class="overview-content">
                   <p class="overview">{{ video.overview }}</p>
+                  <p class="cast"> {{ video.cast }}</p>
                 </div>
               </div>
             </div>
@@ -65,7 +68,7 @@
       <div class="footer">
         <div class="content-footer">
           <a href=""><img src="assets/img/logo-boolflix.png" alt="Logo Boolflix"></a>
-          <p class="copyright">&#9400; Copyright - 2020</p>
+          <p class="copyright">&#9400; Copyright - 2021</p>
         </div>
       </div>
     </div>
