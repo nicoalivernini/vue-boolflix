@@ -99,16 +99,38 @@ var app = new Vue ({
 
     flag: function (nazione) {
       if (this.type != '') {
-        axios.get(`${this.uri}/search/${this.type}?api_key=${this.apiKey}&query=${this.inputUtente}&language=${nazione}`)
-        .then((response) => {
-          this.videoRicerca = (response.data.results);
+        //Cambio lingua Film e Serie cercate dall'utente
+        if (this.titleH1 == `I film della ricerca: ${this.inputUtente}` || this.titleH1 == `Serie tv della ricerca: ${this.inputUtente}` ) {
+          axios.get(`${this.uri}/search/${this.type}?api_key=${this.apiKey}&query=${this.inputUtente}&language=${nazione}`)
+          .then((response) => {
+            this.videoRicerca = (response.data.results);
+          });
+        }
+        //Cambio lingua prossime uscite | Film popolari | Serie tv popolari
+        if (this.titleH1 == 'Prossime uscite:') {
+          axios.get(`${this.uri}/movie/upcoming?api_key=${this.apiKey}&language=${nazione}`)
+          .then((response) => {
+            this.videoRicerca = (response.data.results);
         });
+        } else if (this.titleH1 == 'Film popolari:') {
+            axios.get(`${this.uri}/movie/popular?api_key=${this.apiKey}&language=${nazione}`)
+            .then((response) => {
+              this.videoRicerca = (response.data.results);
+            });
+        } else if (this.titleH1 == 'Serie tv popolari:') {
+            axios.get(`${this.uri}/tv/popular?api_key=${this.apiKey}&language=${nazione}`)
+            .then((response) => {
+              this.videoRicerca = (response.data.results);
+            });
+          }
+
       } else {
         axios.get(`${this.uri}/search/multi?api_key=${this.apiKey}&query=${this.inputUtente}&language=${nazione}`)
         .then((response) => {
           this.videoRicerca = (response.data.results);
         });
-        }
+      }
+
     },//Chiusura flag
 
   } //Chiusura Methods
